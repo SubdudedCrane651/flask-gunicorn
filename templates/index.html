@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>{{ title }}</title>
+<link rel="stylesheet" href="static/plugins.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>  
+
+<style>body {
+	background-color: white;
+	font-family: "Arial", bold;
+  font-size: 30px;
+	text-shadow: 3px 3px 3px #ababab;
+}
+
+h2.uppercase {
+            text-transform: uppercase;
+        }
+		
+		.input-button {
+            display: inline-block;
+            width: 15%;
+            cursor: pointer;
+            font: bold 30px Arial, Helvetica;
+            border-radius: 5px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+        }		
+		
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}		
+		</style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+<section id="page-content" class="sidebar-right">
+                <div class="container">
+                    <div class="row">
+                        <!-- post content -->
+                        <div class="content col-lg-9">
+  <center>
+    <img src="static/images/Loteries.JPG" alt="Loteries"><h2 class="uppercase">{{ title }}</h2>
+  </center>
+    <br>
+	<table>
+	<tr>
+	<th><img src="static/images/649.png" alt="6/49"></th>
+	<th> <h2><a href="/?lotto=1">1-Lotto 6/49</a></h2></th>
+	</tr>
+	<tr>
+    <th><img src="static/images/Lotto_Max.png" alt="Lotto Max"></th>
+	<th><h2><a href="/?lotto=2">2-Lotto Max</a></h2></th>
+	</tr>
+	<tr>
+	<th><img src="static/images/Grande_Vie.png" alt="Grande Vie"></th>
+    <th><h2><a href="/?lotto=3">3-Grande Vie</a></h2></th>
+	</tr>
+	<tr>
+	<th><img src="static/images/Tout_ou_rien.png" alt="Tout ou rien"></th>
+	<th><h2><a href="/?lotto=4">4-Tout ou rien</a></h2></th>
+	</table>
+    <form role="form" method='POST' action='/'>
+        <h2>What do you choose :<input type="text" name="choice" /></h2>
+        <p><input type="submit" id='getDataBtn' class="input-button" name="Submit" value="Submit" /></p>
+    </form>
+ 	<br>
+ 	<div id="loader"></div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+  {% autoescape false %}
+       {{ result }}
+  {% endautoescape %}
+  </div>
+            </div>
+        </div>
+        </div>
+	</section>
+	<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+	<script src="static/js/jquery.js"></script>
+    <script src="static/js/plugins.js"></script>
+    <!--Template functions-->
+    <script src="static/js/functions.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Countries</title>
+</head>
+<body>
+   <table border="1" cellspacing="5px" cellpadding="5px" align="center" style="font-size: 20px">
+  <thead style="background-color: grey">
+    <tr>
+      <th>Name</th>
+      <th>Capital</th>
+      <th>language</th>
+      <th>Currencies</th>
+      <th>Flag</th>
+    </tr>
+  </thead>
+      <tbody>
+       {%for c in range(0,len)%}
+        <tr>
+        <td>{{data['name'][c]}}</td>
+        <td>{{data['capital'][c]}}</td>
+        <td>{{data['language'][c]['name']}}</td>
+
+        <td>{{data['currency'][c]
+          ['name']}}</td>
+        <td><img width="100px" height="50px" src="{{data['flag'][c]}}"/></td>
+        </tr>
+       {%endfor%}
+        </tbody>
+    </table>
+</body>
+
+</html>
